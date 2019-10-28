@@ -15,11 +15,34 @@ namespace Chocolatey_Interview
 
         internal static void chkPalindrome(string str)
         {
-             /* input:-madam; output:-Palindrome
-             * input:-step on no pets;output-Palindrome
-             * input:-book; output-Not Palindrome
-             * 
-             * */
+            /* input:-madam; output:-Palindrome
+            * input:-step on no pets;output-Palindrome
+            * input:-book; output-Not Palindrome
+            * 
+            * */
+
+            //Convert the string to lower so that uppercase doesn't effect check
+            //Also, remove spaces as some palindromes allow for different spacing
+            //IE: A nut for a jar of tuna
+            str = str.ToLower().Replace(" ", "");
+
+            //Get the middle of the string for the loop
+            int strLength = str.Length;
+            int mid = strLength / 2;
+            
+            //This loop will increment i under 2 conditions
+            //1) i is less than the mid value
+            //2) the chars at the opposite ends are equal
+            int i = 0;
+            while (i < mid && str[i] == str[strLength - i - 1])
+            {
+                i++;
+            }
+
+            //If i == mid, then the loop was able to go through the entire string
+            //signalling that it is a palindrome.
+            if (i == mid) Console.WriteLine("Palindrome");
+            else Console.WriteLine("Not Palindrome");
         }
 
         internal static void SingleToMulti(int[] array, int row, int column)
