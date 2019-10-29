@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,56 @@ namespace Chocolatey_Interview
     {
         static void Main(string[] args)
         {
+            //Tests for chkPalindrome
+
+            //Time test - Result 6 ms
+            var stopwatch = new Stopwatch();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < 99999; i++)
+            {
+                sb.Append("AAAAAAAAA");
+            }
+            String convertedString = sb.ToString();
+            stopwatch.Start();
+            chkPalindrome(convertedString);
+            stopwatch.Stop();
+
+            Console.WriteLine("Time: " + stopwatch.ElapsedMilliseconds);
+
+            //Uppercase/lowerCase test - Good
+            Console.Write("Upper/Lower test [MaDdAm]: ");
+            chkPalindrome("MaDdAm");
+
+            //Even # test - Good
+            Console.Write("Even Test [Maddam]: ");
+            chkPalindrome("Maddam");
+
+            //Odd # test - Good
+            Console.Write("Odd Test [Madam]: ");
+            chkPalindrome("Madam");
+
+            //Check to make sure it detects false palindromes - Good
+            Console.Write("False Test [Hello World]: ");
+            chkPalindrome("Hello World");
+            Console.Write("False Test [Chocolatey]: ");
+            chkPalindrome("Chocolatey");
+
+            //Step on no pets test - Good
+            Console.Write("Regular Test [step on no pets]: ");
+            chkPalindrome("step on no pets");
+
+            //Spacing test - Good
+            Console.Write("Spacing test [a nut for a jar of tuna]: ");
+            chkPalindrome("a nut for a jar of tuna");
+
+            //Empty string test - It returns a palindrome, but does that make sense?
+            Console.Write("Empty string test []: ");
+            chkPalindrome("");
+
+            //Final test - Good
+            Console.Write("Cumulative Test [Al lets Della call Ed Stella]: ");
+            chkPalindrome("Al lets Della call Ed Stella");
+
             Console.ReadKey();
         }
 
