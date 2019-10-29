@@ -11,6 +11,9 @@ namespace Chocolatey_Interview
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("20: " + FindPrime(20));
+            Console.WriteLine("17: " + FindPrime(17));
+            Console.WriteLine("27644437: " + FindPrime(27644437));
             Console.ReadKey();
         }
 
@@ -134,7 +137,26 @@ namespace Chocolatey_Interview
              * 
              * */
 
-            return false;
+            //If the number is 2, we don't need to run the method
+            if (number == 2) return true;
+
+            //Any number less than 2 will not be prime
+            if (number < 2) return false;
+
+            //Any even number will not be prime
+            if (number % 2 == 0) return false;
+
+            //We start at 2 since prime numbers are divisible by 1,
+            //and we go to the sqrt of number since that's the biggest
+            //number that could potentially be a factor
+            int upperBound = (int)Math.Sqrt(number) + 1;
+            for(int i = 2; i <= upperBound; i++)
+            {
+                if (number % i == 0) return false;
+            }
+
+            //Since we haven't returned false, the number must be prime
+            return true;
         }
     }
 }
