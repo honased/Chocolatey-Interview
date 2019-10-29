@@ -11,9 +11,16 @@ namespace Chocolatey_Interview
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("1: " + FindPrime(1));
+            Console.WriteLine("2: " + FindPrime(2));
+            Console.WriteLine("-7: " + FindPrime(-7));
             Console.WriteLine("20: " + FindPrime(20));
             Console.WriteLine("17: " + FindPrime(17));
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             Console.WriteLine("27644437: " + FindPrime(27644437));
+            stopwatch.Stop();
+            Console.WriteLine("Time: " + stopwatch.ElapsedMilliseconds.ToString());
             Console.ReadKey();
         }
 
@@ -130,6 +137,11 @@ namespace Chocolatey_Interview
             }
         }
 
+        /// <summary>
+        /// Determines if a number is prime or not.
+        /// </summary>
+        /// <param name="number">The number to check for primality.</param>
+        /// <returns>True or false based on if the number is prime.</returns>
         internal static bool FindPrime(int number)
         {
             /* input:-20 output:-Not Prime
