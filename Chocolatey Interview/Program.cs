@@ -64,6 +64,10 @@ namespace Chocolatey_Interview
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Determines if a given string is a palindrome (if the string is the same forwards and backwards).
+        /// </summary>
+        /// <param name="str">The string to check if it's a palindrome</param>
         internal static void chkPalindrome(string str)
         {
             /* input:-madam; output:-Palindrome
