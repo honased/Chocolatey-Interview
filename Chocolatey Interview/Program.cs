@@ -11,6 +11,7 @@ namespace Chocolatey_Interview
     {
         static void Main(string[] args)
         {
+            SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 2, 3);
             Console.ReadKey();
         }
 
@@ -32,14 +33,14 @@ namespace Chocolatey_Interview
 
             //Get the middle of the string for the loop
             int strLength = str.Length;
+            int mid = strLength / 2;
 
-            if(strLength == 0)
+            //If it is an empty string, it is not a palindrome
+            if (strLength == 0)
             {
                 Console.WriteLine("Not Palindrome");
                 return;
             }
-
-            int mid = strLength / 2;
             
             //This loop will increment i under 2 conditions
             //1) i is less than the mid value
@@ -62,6 +63,32 @@ namespace Chocolatey_Interview
              * output: 1 2 3
              *         4 5 6
              * */
+
+            int[,] array2D = new int[row, column];
+
+            for(int i = 0; i < array.Length; i++)
+            {
+                //Use integer division to get current row
+                //Ex: 5 / 3 = 1
+                int curRow = i / column;
+
+                //Use modulus to get current column
+                //Ex: 5 % 3 = 2
+                int curCol = i % column;
+
+                //Thus, EX: array2D[1, 2] = 5
+                array2D[curRow, curCol] = array[i];
+            }
+
+            //Basic for loop to display contents of the array
+            for(int curRow = 0; curRow < row; curRow++)
+            {
+                for(int curCol = 0; curCol < column; curCol++)
+                {
+                    Console.Write(array2D[curRow, curCol].ToString() + " ");
+                }
+                Console.WriteLine();
+            }
         }
 
         internal static bool FindPrime(int number)
