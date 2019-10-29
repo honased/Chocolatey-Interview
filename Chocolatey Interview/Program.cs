@@ -61,8 +61,6 @@ namespace Chocolatey_Interview
             Console.Write("Cumulative Test [Al lets Della call Ed Stella]: ");
             chkPalindrome("Al lets Della call Ed Stella");
 
-            //chkPalindrome("maddam");
-
             Console.ReadKey();
         }
 
@@ -77,27 +75,24 @@ namespace Chocolatey_Interview
             //Convert the string to lower so that uppercase doesn't effect check
             //Also, remove spaces as some palindromes allow for different spacing
             //IE: A nut for a jar of tuna
-            str = str.ToLower();
+            str = str.Replace(" ", "");
 
             //Get the middle of the string for the loop
             int strLength = str.Length;
-            //int mid = strLength / 2;
+            int mid = strLength / 2;
             
             //This loop will increment i under 2 conditions
             //1) i is less than the mid value
-            //2) the chars at the opposite ends are equal
+            //2) the chars at the opposite ends are equal regardless of case
             int i = 0;
-            int low = 0, high = str.Length - 1;
-            while (low < high && str[low] == str[high])
+            while (i < mid && (str[i] == str[strLength - i - 1] || char.ToLower(str[i]) == char.ToLower(str[strLength-i-1])))
             {
-                while (!Char.IsLetterOrDigit(str[++low])) ;
-                while (!Char.IsLetterOrDigit(str[--high])) ;
+                i++;
             }
 
             //If i == mid, then the loop was able to go through the entire string
             //signalling that it is a palindrome.
-            Console.WriteLine(low.ToString() + "," + high.ToString());
-            if (high > -1 && str[low] == str[high]) Console.WriteLine("Palindrome");
+            if (i == mid) Console.WriteLine("Palindrome");
             else Console.WriteLine("Not Palindrome");
         }
 
