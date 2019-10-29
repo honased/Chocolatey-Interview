@@ -12,6 +12,16 @@ namespace Chocolatey_Interview
         static void Main(string[] args)
         {
             SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 2, 3);
+            Console.WriteLine();
+            SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 99999999, 99999999);
+            Console.WriteLine();
+            SingleToMulti(new int[] { 1, 2, 3, 4, 5 ,6 }, 2, 2);
+            Console.WriteLine();
+            SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 0, 0);
+            Console.WriteLine();
+            SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 5, 0);
+            Console.WriteLine();
+            SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 0, 5);
             Console.ReadKey();
         }
 
@@ -64,9 +74,34 @@ namespace Chocolatey_Interview
              *         4 5 6
              * */
 
-            int[,] array2D = new int[row, column];
+            int[,] array2D = null;
 
-            for(int i = 0; i < array.Length; i++)
+            //Basic try catch to ensure that the user isn't trying to use too much memory
+            //This ensures that the program won't break
+            try
+            {
+                array2D = new int[row, column];
+            }
+            catch (OutOfMemoryException e)
+            {
+                Console.WriteLine("[ERROR] The dimensions of the 2d array would be too large.\nCancelling array conversion...");
+                return;
+            }
+
+            /*Ensures that the given parameters for the 2d array have enough space to actually hold all
+             * the data from the original 1d array.
+             * 
+             * Instead of completely cancelling out of the conversion, I instead chose to issue a 
+             * warning to the user and go ahead and convert the array knowing that data will be lost.
+             */
+            if(row*column < array.Length)
+            {
+                Console.WriteLine("[WARNING] The 2d array will be too small to contain all the data.\nPlease check your row/column values...");
+            }
+
+            //Using a min function to get the smallest size between the array and the row/column so that we don't look outside of the array's bounds.
+            int size = Math.Min(row * column, array.Length);
+            for(int i = 0; i < size; i++)
             {
                 //Use integer division to get current row
                 //Ex: 5 / 3 = 1
