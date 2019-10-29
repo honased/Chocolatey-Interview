@@ -11,17 +11,6 @@ namespace Chocolatey_Interview
     {
         static void Main(string[] args)
         {
-            SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 2, 3);
-            Console.WriteLine();
-            SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 99999999, 99999999);
-            Console.WriteLine();
-            SingleToMulti(new int[] { 1, 2, 3, 4, 5 ,6 }, 2, 2);
-            Console.WriteLine();
-            SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 0, 0);
-            Console.WriteLine();
-            SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 5, 0);
-            Console.WriteLine();
-            SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 0, 5);
             Console.ReadKey();
         }
 
@@ -67,12 +56,24 @@ namespace Chocolatey_Interview
             else Console.WriteLine("Not Palindrome");
         }
 
+        /// <summary>
+        /// Converts a 1d array to a 2d array and displays the contents to the console.
+        /// </summary>
+        /// <param name="array">The 1d array to be converted into a 2d array</param>
+        /// <param name="row">The number of rows in the 2d array</param>
+        /// <param name="column">The number of columns in the 2d array</param>
         internal static void SingleToMulti(int[] array, int row, int column)
         {
             /* input: 1,2,3,4,5,6
              * output: 1 2 3
              *         4 5 6
              * */
+
+            /* I thought for this method that it would be more useful to have an actual 2d
+             * array than just printing the contents of the array in a '2d' format. This way,
+             * if the function ever needs to return the 2d array, the 2d array is already created,
+             * so all I would have to do is just add a return statement.
+             */
 
             int[,] array2D = null;
 
@@ -116,7 +117,7 @@ namespace Chocolatey_Interview
             }
 
             //Basic for loop to display contents of the array
-            for(int curRow = 0; curRow < row; curRow++)
+            for (int curRow = 0; curRow < row; curRow++)
             {
                 for(int curCol = 0; curCol < column; curCol++)
                 {
