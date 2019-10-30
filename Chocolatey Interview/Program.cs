@@ -11,16 +11,61 @@ namespace Chocolatey_Interview
     {
         static void Main(string[] args)
         {
+            #region Palindrome_Demo
+            Console.WriteLine("Palindrome Demo...");
+            Console.Write("[chkPalindrome] 'madam': ");
+            chkPalindrome("madam");
+
+            Console.Write("[chkPalindrome] 'step on no pets': ");
+            chkPalindrome("step on no pets");
+
+            Console.Write("[chkPalindrome] 'book': ");
+            chkPalindrome("book");
+
+            Console.Write("[chkPalindrome] 'A nut for a jar of tuna': ");
+            chkPalindrome("A nut for a jar of tuna");
+
+            Console.Write("[chkPalindrome] '': ");
+            chkPalindrome("");
+            Console.Write("[chkPalindrome] 'Chocolatey': ");
+            chkPalindrome("Chocolatey");
+
+            Console.WriteLine("Palindrome Demo Ended!");
+            #endregion Palindrome_Demo
+
+            Console.WriteLine("\nPress any key to view next demo...");
+            Console.ReadKey();
+
+            #region SingleToMulti_Demo
+            Console.WriteLine("\nSingle to Multi Demo...");
+            Console.WriteLine("[1,2,3,4,5,6] to 2 rows, 3 columns:");
+            SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 2, 3);
+            Console.WriteLine("\n[1,2,3,4,5,6] to 3 rows, 2 columns:");
+            SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 3, 2);
+            Console.WriteLine("\n[1,2,3,4,5,6] to 99999999 rows, 99999999 columns (should issue error):");
+            SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 99999999, 99999999);
+            Console.WriteLine("\n[1,2,3,4,5,6] to 2 rows, 2 columns (should issue warning):");
+            SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 2, 2);
+            Console.WriteLine("\n[1,2,3,4,5,6] to 0 rows, 0 columns (should issue warning):");
+            SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 0, 0);
+            Console.WriteLine("Single To Multi Demo Ended!");
+            #endregion SingleToMulti_Demo
+
+            Console.WriteLine("\nPress any key to view next demo...");
+            Console.ReadKey();
+
+            #region FindPrime_Demo
+            Console.WriteLine("\nFind Prime Demo...");
+            Console.WriteLine("20: " + FindPrime(20));
+            Console.WriteLine("17: " + FindPrime(17));
             Console.WriteLine("1: " + FindPrime(1));
             Console.WriteLine("2: " + FindPrime(2));
             Console.WriteLine("-7: " + FindPrime(-7));
-            Console.WriteLine("20: " + FindPrime(20));
-            Console.WriteLine("17: " + FindPrime(17));
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
             Console.WriteLine("27644437: " + FindPrime(27644437));
-            stopwatch.Stop();
-            Console.WriteLine("Time: " + stopwatch.ElapsedMilliseconds.ToString());
+            Console.WriteLine("Find Prime Demo Ended!");
+            #endregion FindPrime_Demo
+
+            Console.WriteLine("\nThank you for the opportunity to interview!\nPress any key to exit...");
             Console.ReadKey();
         }
 
@@ -107,7 +152,7 @@ namespace Chocolatey_Interview
              */
             if(row*column < array.Length)
             {
-                Console.WriteLine("[WARNING] The 2d array will be too small to contain all the data.\nPlease check your row/column values...");
+                Console.WriteLine("[WARNING] The 2d array will be too small to contain all the data.\nProceeding with conversion...");
             }
 
             //Using a min function to get the smallest size between the array and the row/column so that we don't look outside of the array's bounds.
