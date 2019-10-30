@@ -1,9 +1,9 @@
-﻿using System;
+﻿// Eric Honas
+// Chocolatey Interview Project
+
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Chocolatey_Interview
 {
@@ -11,173 +11,177 @@ namespace Chocolatey_Interview
     {
         static void Main(string[] args)
         {
-            #region Palindrome_Demo
-            //Basic demo
-            Console.WriteLine("Palindrome Demo...");
-            Console.Write("[chkPalindrome] 'madam': ");
-            chkPalindrome("madam");
+            bool demoMode = true;
 
-            Console.Write("[chkPalindrome] 'step on no pets': ");
-            chkPalindrome("step on no pets");
-
-            Console.Write("[chkPalindrome] 'book': ");
-            chkPalindrome("book");
-
-            Console.Write("[chkPalindrome] 'A nut for a jar of tuna': ");
-            chkPalindrome("A nut for a jar of tuna");
-
-            Console.Write("[chkPalindrome] '': ");
-            chkPalindrome("");
-            Console.Write("[chkPalindrome] 'Chocolatey': ");
-            chkPalindrome("Chocolatey");
-
-            #region Interaction
-            Console.WriteLine("\nNow's your chance to try it out!\nType in anything you want to see if it's a palindrome.\nEnter nothing to end this demo.");
-
-            //Get input from user
-            string input = "";
-            Console.Write("Input: ");
-            input = Console.ReadLine();
-
-            //Only do interaction if the user doesn't press only enter
-            while (input != "")
+            if (demoMode)
             {
-                Console.Write("[chkPalindrome] '" + input + "': ");
-                chkPalindrome(input);
+                #region Palindrome_Demo
+                //Basic demo
+                Console.WriteLine("Palindrome Demo...");
+                Console.Write("[chkPalindrome] 'madam': ");
+                chkPalindrome("madam");
 
-                //Get input again
-                Console.Write("\nInput: ");
+                Console.Write("[chkPalindrome] 'step on no pets': ");
+                chkPalindrome("step on no pets");
+
+                Console.Write("[chkPalindrome] 'book': ");
+                chkPalindrome("book");
+
+                Console.Write("[chkPalindrome] 'A nut for a jar of tuna': ");
+                chkPalindrome("A nut for a jar of tuna");
+
+                Console.Write("[chkPalindrome] '': ");
+                chkPalindrome("");
+                Console.Write("[chkPalindrome] 'Chocolatey': ");
+                chkPalindrome("Chocolatey");
+
+                #region Interaction
+                Console.WriteLine("\nNow's your chance to try it out!\nType in anything you want to see if it's a palindrome.\nEnter nothing to end this demo.");
+
+                //Get input from user
+                string input = "";
+                Console.Write("Input: ");
                 input = Console.ReadLine();
-            }
-            #endregion Interaction
 
-            Console.WriteLine("Palindrome Demo Ended!");
-            #endregion Palindrome_Demo
-
-            Console.WriteLine("\nPress any key to view next demo...");
-            Console.ReadKey();
-
-            #region SingleToMulti_Demo
-            //Basic demo
-            Console.WriteLine("\nSingle to Multi Demo...");
-            Console.WriteLine("[1,2,3,4,5,6] to 2 rows, 3 columns:");
-            SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 2, 3);
-            Console.WriteLine("\n[1,2,3,4,5,6] to 3 rows, 2 columns:");
-            SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 3, 2);
-            Console.WriteLine("\n[1,2,3,4,5,6] to 99999999 rows, 99999999 columns (should issue error):");
-            SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 99999999, 99999999);
-            Console.WriteLine("\n[1,2,3,4,5,6] to 2 rows, 2 columns (should issue warning):");
-            SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 2, 2);
-            Console.WriteLine("\n[1,2,3,4,5,6] to 0 rows, 0 columns (should issue warning):");
-            SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 0, 0);
-
-            #region Interaction
-            Console.WriteLine("\nNow's your chance to try it out!\nType in a sequence of numbers like '1 5 9 3'. Then, enter your rows/column. \nEnter nothing to end this demo.");
-
-            //Get input in form of '1 5 8 9 3'
-            Console.Write("Numbers: ");
-            input = Console.ReadLine();
-
-            //Only loop if they have not only pressed enter
-            while (input != "")
-            {
-                //Split the string by the space char
-                string[] splitInput = input.Split(' ');
-
-                int[] array = new int[splitInput.Length];
-
-                //Loop through to try and convert each string into a number
-                bool badInput = false;
-                for(int i = 0; i < array.Length; i++)
+                //Only do interaction if the user doesn't press only enter
+                while (input != "")
                 {
-                    try
-                    {
-                        array[i] = Int32.Parse(splitInput[i]);
-                    }
-                    catch(FormatException e)
-                    {
-                        //It wasn't an integer, so we will have to get the input again.
-                        Console.WriteLine("Bad Input...\n");
-                        Console.Write("Numbers: ");
-                        input = Console.ReadLine();
-                        badInput = true;
-                        break;
-                    }
+                    Console.Write("[chkPalindrome] '" + input + "': ");
+                    chkPalindrome(input);
+
+                    //Get input again
+                    Console.Write("\nInput: ");
+                    input = Console.ReadLine();
                 }
+                #endregion Interaction
 
-                //This jumps back to the beginning if bad input was received.
-                if (badInput) continue;
+                Console.WriteLine("Palindrome Demo Ended!");
+                #endregion Palindrome_Demo
 
-                //Input validation for rows
-                Console.Write("Rows: ");
-                int rows;
-                while(!Int32.TryParse(Console.ReadLine(), out rows))
+                Console.WriteLine("\nPress any key to view next demo...");
+                Console.ReadKey();
+
+                #region SingleToMulti_Demo
+                //Basic demo
+                Console.WriteLine("\nSingle to Multi Demo...");
+                Console.WriteLine("[1,2,3,4,5,6] to 2 rows, 3 columns:");
+                SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 2, 3);
+                Console.WriteLine("\n[1,2,3,4,5,6] to 3 rows, 2 columns:");
+                SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 3, 2);
+                Console.WriteLine("\n[1,2,3,4,5,6] to 99999999 rows, 99999999 columns (should issue error):");
+                SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 99999999, 99999999);
+                Console.WriteLine("\n[1,2,3,4,5,6] to 2 rows, 2 columns (should issue warning):");
+                SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 2, 2);
+                Console.WriteLine("\n[1,2,3,4,5,6] to 0 rows, 0 columns (should issue warning):");
+                SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 0, 0);
+
+                #region Interaction
+                Console.WriteLine("\nNow's your chance to try it out!\nType in a sequence of numbers like '1 5 9 3'. Then, enter your rows/column. \nEnter nothing to end this demo.");
+
+                //Get input in form of '1 5 8 9 3'
+                Console.Write("Numbers: ");
+                input = Console.ReadLine();
+
+                //Only loop if they have not only pressed enter
+                while (input != "")
                 {
-                    Console.WriteLine("Bad Input.\n");
+                    //Split the string by the space char
+                    string[] splitInput = input.Split(' ');
+
+                    int[] array = new int[splitInput.Length];
+
+                    //Loop through to try and convert each string into a number
+                    bool badInput = false;
+                    for (int i = 0; i < array.Length; i++)
+                    {
+                        int outNum;
+                        if (!Int32.TryParse(splitInput[i], out outNum))
+                        {
+                            //It wasn't an integer, so we will have to get the input again.
+                            Console.WriteLine("Bad Input...\n");
+                            Console.Write("Numbers: ");
+                            input = Console.ReadLine();
+                            badInput = true;
+                            break;
+                        }
+                        array[i] = outNum;
+                    }
+
+                    //This jumps back to the beginning if bad input was received.
+                    if (badInput) continue;
+
+                    //Input validation for rows
                     Console.Write("Rows: ");
-                }
+                    int rows;
+                    while (!Int32.TryParse(Console.ReadLine(), out rows))
+                    {
+                        Console.WriteLine("Bad Input.\n");
+                        Console.Write("Rows: ");
+                    }
 
-                //Input validation for columns
-                Console.Write("Columns: ");
-                int columns;
-                while (!Int32.TryParse(Console.ReadLine(), out columns))
-                {
-                    Console.WriteLine("Bad Input.\n");
+                    //Input validation for columns
                     Console.Write("Columns: ");
+                    int columns;
+                    while (!Int32.TryParse(Console.ReadLine(), out columns))
+                    {
+                        Console.WriteLine("Bad Input.\n");
+                        Console.Write("Columns: ");
+                    }
+
+                    //Display the converted array
+                    Console.WriteLine("Converting array...");
+                    SingleToMulti(array, rows, columns);
+
+                    //Get the input again
+                    Console.Write("\nNumbers: ");
+                    input = Console.ReadLine();
                 }
+                #endregion Interaction
 
-                //Display the converted array
-                Console.WriteLine("Converting array...");
-                SingleToMulti(array, rows, columns);
+                Console.WriteLine("Single To Multi Demo Ended!");
+                #endregion SingleToMulti_Demo
 
-                //Get the input again
-                Console.Write("\nNumbers: ");
+                Console.WriteLine("\nPress any key to view next demo...");
+                Console.ReadKey();
+
+                #region FindPrime_Demo
+                //Basic demo
+                Console.WriteLine("\nFind Prime Demo...");
+                Console.WriteLine("20: " + FindPrime(20));
+                Console.WriteLine("17: " + FindPrime(17));
+                Console.WriteLine("1: " + FindPrime(1));
+                Console.WriteLine("2: " + FindPrime(2));
+                Console.WriteLine("-7: " + FindPrime(-7));
+                Console.WriteLine("27644437: " + FindPrime(27644437));
+
+                #region Interaction
+                Console.WriteLine("\nNow's your chance to try it out!\nType in any integer you want to see if it's a prime number.\nEnter nothing to end this demo.");
+
+                //Get the input
+                Console.Write("Input: ");
                 input = Console.ReadLine();
-            }
-            #endregion Interaction
 
-            Console.WriteLine("Single To Multi Demo Ended!");
-            #endregion SingleToMulti_Demo
-
-            Console.WriteLine("\nPress any key to view next demo...");
-            Console.ReadKey();
-
-            #region FindPrime_Demo
-            //Basic demo
-            Console.WriteLine("\nFind Prime Demo...");
-            Console.WriteLine("20: " + FindPrime(20));
-            Console.WriteLine("17: " + FindPrime(17));
-            Console.WriteLine("1: " + FindPrime(1));
-            Console.WriteLine("2: " + FindPrime(2));
-            Console.WriteLine("-7: " + FindPrime(-7));
-            Console.WriteLine("27644437: " + FindPrime(27644437));
-
-            #region Interaction
-            Console.WriteLine("\nNow's your chance to try it out!\nType in any integer you want to see if it's a prime number.\nEnter nothing to end this demo.");
-
-            //Get the input
-            Console.Write("Input: ");
-            input = Console.ReadLine();
-
-            //Only loop while enter wasn't the only key pressed
-            while (input != "")
-            {
-                //primeNum validation to ensure we only find the number on an actual number, not a string
-                int primeNum;
-                if(!Int32.TryParse(input, out primeNum))
+                //Only loop while enter wasn't the only key pressed
+                while (input != "")
                 {
-                    Console.WriteLine("Bad Input.");
+                    //primeNum validation to ensure we only find the number on an actual number, not a string
+                    int primeNum;
+                    if (!Int32.TryParse(input, out primeNum))
+                    {
+                        Console.WriteLine("Bad Input.");
+                    }
+                    else Console.WriteLine(input + ": " + FindPrime(primeNum));
+
+                    //Get the input again
+                    Console.Write("\nInput: ");
+                    input = Console.ReadLine();
                 }
-                else Console.WriteLine(input + ": " + FindPrime(primeNum));
+                #endregion Interaction
 
-                //Get the input again
-                Console.Write("\nInput: ");
-                input = Console.ReadLine();
+                Console.WriteLine("Find Prime Demo Ended!");
+                #endregion FindPrime_Demo
+
             }
-            #endregion Interaction
-
-            Console.WriteLine("Find Prime Demo Ended!");
-            #endregion FindPrime_Demo
 
             Console.WriteLine("\nThank you for the opportunity to interview!\nPress any key to exit...");
             Console.ReadKey();
@@ -246,9 +250,9 @@ namespace Chocolatey_Interview
 
             int[,] array2D = null;
 
-            if(row < 0 || column < 0)
+            if(row <= 0 || column <= 0)
             {
-                Console.WriteLine("[ERROR] The dimensions of the array cannot be negative!");
+                Console.WriteLine("[ERROR] The dimensions of the array cannot be 0 or negative!");
                 return;
             }
 
