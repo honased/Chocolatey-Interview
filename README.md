@@ -55,4 +55,6 @@ As stated in the introduction, this program features a 'demo' to show off each m
 ## Final Remarks
 Feel free to download and tinker with any of the code. I would be interested in seeing these methods fully tested to their extent.
 
+Click [here](https://trello.com/b/2K1Fybrj) to view the Trello board I used while working on the interview.
+
 Finally, thank you to Chocolatey for providing me with the opportunity to interview with their company.
