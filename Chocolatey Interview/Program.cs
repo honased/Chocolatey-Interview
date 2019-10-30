@@ -30,6 +30,23 @@ namespace Chocolatey_Interview
             Console.Write("[chkPalindrome] 'Chocolatey': ");
             chkPalindrome("Chocolatey");
 
+            #region Interaction
+            Console.WriteLine("\nNow's your chance to try it out!\nType in anything you want to see if it's a palindrome.\nEnter nothing to end this demo.");
+
+            string input = " ";
+            Console.Write("Input: ");
+            input = Console.ReadLine();
+
+            while (input != "")
+            {
+                Console.Write("[chkPalindrome] '" + input + "': ");
+                chkPalindrome(input);
+
+                Console.Write("\nInput: ");
+                input = Console.ReadLine();
+            }
+            #endregion Interaction
+
             Console.WriteLine("Palindrome Demo Ended!");
             #endregion Palindrome_Demo
 
@@ -48,6 +65,39 @@ namespace Chocolatey_Interview
             SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 2, 2);
             Console.WriteLine("\n[1,2,3,4,5,6] to 0 rows, 0 columns (should issue warning):");
             SingleToMulti(new int[] { 1, 2, 3, 4, 5, 6 }, 0, 0);
+
+            #region Interaction
+            Console.WriteLine("\nNow's your chance to try it out!\nType in a sequence of numbers like '1 5 9 3'. Then, enter your rows/column. \nEnter nothing to end this demo.");
+
+            input = " ";
+            Console.Write("Numbers: ");
+            input = Console.ReadLine();
+
+            while (input != "")
+            {
+                string[] splitInput = input.Split(new char[] { ' ' });
+
+                int[] array = new int[splitInput.Length];
+
+                for(int i = 0; i < array.Length; i++)
+                {
+                    array[i] = Int32.Parse(splitInput[i]);
+                }
+
+                Console.Write("Rows: ");
+                int rows = Int32.Parse(Console.ReadLine());
+
+                Console.Write("Columns: ");
+                int columns = Int32.Parse(Console.ReadLine());
+
+                Console.WriteLine("Converting array...");
+                SingleToMulti(array, rows, columns);
+
+                Console.Write("\nNumbers: ");
+                input = Console.ReadLine();
+            }
+            #endregion Interaction
+
             Console.WriteLine("Single To Multi Demo Ended!");
             #endregion SingleToMulti_Demo
 
@@ -62,6 +112,23 @@ namespace Chocolatey_Interview
             Console.WriteLine("2: " + FindPrime(2));
             Console.WriteLine("-7: " + FindPrime(-7));
             Console.WriteLine("27644437: " + FindPrime(27644437));
+
+            #region Interaction
+            Console.WriteLine("\nNow's your chance to try it out!\nType in any integer you want to see if it's a prime number.\nEnter nothing to end this demo.");
+
+            input = " ";
+            Console.Write("Input: ");
+            input = Console.ReadLine();
+
+            while (input != "")
+            {
+                Console.WriteLine(input + ": " + FindPrime(Int32.Parse(input)));
+
+                Console.Write("\nInput: ");
+                input = Console.ReadLine();
+            }
+            #endregion Interaction
+
             Console.WriteLine("Find Prime Demo Ended!");
             #endregion FindPrime_Demo
 
@@ -131,6 +198,12 @@ namespace Chocolatey_Interview
              */
 
             int[,] array2D = null;
+
+            if(row < 0 || column < 0)
+            {
+                Console.WriteLine("[ERROR] The dimensions of the array cannot be negative!");
+                return;
+            }
 
             //Basic try catch to ensure that the user isn't trying to use too much memory
             //This ensures that the program won't break
