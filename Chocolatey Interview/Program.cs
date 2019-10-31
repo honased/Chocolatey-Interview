@@ -199,9 +199,23 @@ namespace Chocolatey_Interview
             * 
             * */
 
+            //Check to make sure string is not null when first passed
+            if(str == null)
+            {
+                Console.WriteLine("Not Palindrome");
+                return;
+            }
+
             //Removes spaces as some palindromes allow for different spacing
             //IE: A nut for a jar of tuna
             str = str.Replace(" ", "");
+
+            //Check to make sure string is not somehow null
+            if (str == null)
+            {
+                Console.WriteLine("Not Palindrome");
+                return;
+            }
 
             //Get the middle of the string for the loop
             int strLength = str.Length;
